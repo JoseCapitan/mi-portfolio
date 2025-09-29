@@ -1,4 +1,63 @@
 <section class="min-h-screen flex flex-col justify-center items-center px-4">
-  <h1 class="text-4xl md:text-6xl font-bold mb-4">José Manuel Capitán Cruz</h1>
-  <p class="text-xl text-red-500">Desarrollador Frontend</p>
+  <div class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gray-950">
+    <!-- Canvas animado de fondo -->
+    <canvas id="hero-bg-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+
+    <!-- Contenido principal del hero -->
+    <div class="relative z-10 text-center text-white flex flex-col items-center justify-center gap-6">
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight drop-shadow-lg">TU NOMBRE</h1>
+      <h2 class="text-2xl md:text-3xl font-semibold text-indigo-400 mb-2">Matemáticas & Computación</h2>
+      <div class="flex gap-4 mt-4">
+        <a href="https://linkedin.com" target="_blank" class="hover:scale-110 transition-transform">
+          <img src="assets/linkedin.svg" alt="LinkedIn" class="w-8 h-8" />
+        </a>
+        <a href="https://github.com" target="_blank" class="hover:scale-110 transition-transform">
+          <img src="assets/github.svg" alt="GitHub" class="w-8 h-8" />
+        </a>
+        <a href="mailto:tucorreo@email.com" class="hover:scale-110 transition-transform">
+          <img src="assets/mail.svg" alt="Correo" class="w-8 h-8" />
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- Script para animar el canvas de fondo -->
+<script>
+const canvas = document.getElementById('hero-bg-canvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Simple animación de partículas
+  const particles = Array.from({ length: 60 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 1,
+    dx: (Math.random() - 0.5) * 0.7,
+    dy: (Math.random() - 0.5) * 0.7,
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha = 0.5;
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+      ctx.fillStyle = '#6366f1';
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+</script>
