@@ -1,12 +1,26 @@
-<section class="min-h-screen flex flex-col justify-center items-center px-4">
-  <div class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gray-950">
-    <!-- Canvas animado de fondo -->
-    <canvas id="hero-bg-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+
+<section class="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-950">
+  <!-- Canvas de fondo general (background) -->
+  <canvas id="background-canvas"
+    style="position:fixed;left:0;top:0;width:100vw;height:100vh;min-width:100vw;min-height:100vh;max-width:none;max-height:none;z-index:0;pointer-events:none;"
+    width="1920" height="1080"></canvas>
+
+  <!-- Canvas de ondas animadas -->
+  <canvas id="waves-canvas"
+    style="position:fixed;left:0;top:0;width:100vw;height:100vh;min-width:100vw;min-height:100vh;max-width:none;max-height:none;z-index:1;pointer-events:none;"
+    width="1920" height="1080"></canvas>
+
+  <!-- Hero principal -->
+  <div class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-transparent z-10">
+    <!-- Canvas de polígonos animados sobre el hero -->
+    <canvas id="hero-polygons-canvas"
+      style="position:absolute;left:0;top:0;width:100vw;height:100vh;min-width:100vw;min-height:100vh;max-width:none;max-height:none;z-index:2;pointer-events:none;"
+      width="1920" height="1080"></canvas>
 
     <!-- Contenido principal del hero -->
-    <div class="relative z-10 text-center text-white flex flex-col items-center justify-center gap-6">
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight drop-shadow-lg">TU NOMBRE</h1>
-      <h2 class="text-2xl md:text-3xl font-semibold text-indigo-400 mb-2">Matemáticas & Computación</h2>
+    <div class="relative z-20 text-center text-white flex flex-col items-center justify-center gap-6">
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight drop-shadow-lg">JOSÉ MANUEL CAPITÁN CRUZ</h1>
+      <h2 class="text-2xl md:text-3xl font-semibold text-indigo-400 mb-2">FRONTEND & ANGULAR</h2>
       <div class="flex gap-4 mt-4">
         <a href="https://linkedin.com" target="_blank" class="hover:scale-110 transition-transform">
           <img src="assets/linkedin.svg" alt="LinkedIn" class="w-8 h-8" />
@@ -21,43 +35,3 @@
     </div>
   </div>
 </section>
-
-<!-- Script para animar el canvas de fondo -->
-<script>
-const canvas = document.getElementById('hero-bg-canvas');
-if (canvas) {
-  const ctx = canvas.getContext('2d');
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  // Simple animación de partículas
-  const particles = Array.from({ length: 60 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2 + 1,
-    dx: (Math.random() - 0.5) * 0.7,
-    dy: (Math.random() - 0.5) * 0.7,
-  }));
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = 0.5;
-    for (const p of particles) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-      ctx.fillStyle = '#6366f1';
-      ctx.fill();
-      p.x += p.dx;
-      p.y += p.dy;
-      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-    }
-    requestAnimationFrame(animate);
-  }
-  animate();
-}
-</script>
