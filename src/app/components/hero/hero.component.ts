@@ -7,43 +7,6 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class HeroComponent implements AfterViewInit {
   ngAfterViewInit(): void {
-    // 1. Fondo de partículas (background-canvas)
-    const particlesCanvas = document.getElementById('background-canvas') as HTMLCanvasElement | null;
-    if (particlesCanvas) {
-      const ctx = particlesCanvas.getContext('2d');
-      function resizeParticles() {
-        if (!particlesCanvas) return;
-        particlesCanvas.width = window.innerWidth;
-        particlesCanvas.height = window.innerHeight;
-      }
-      window.addEventListener('resize', resizeParticles);
-      resizeParticles();
-      // Partículas
-      const particles = Array.from({ length: 60 }, () => ({
-        x: Math.random() * (particlesCanvas?.width ?? window.innerWidth),
-        y: Math.random() * (particlesCanvas?.height ?? window.innerHeight),
-        r: Math.random() * 2 + 1,
-        dx: (Math.random() - 0.5) * 0.7,
-        dy: (Math.random() - 0.5) * 0.7,
-      }));
-      function animateParticles() {
-        if (!particlesCanvas || !ctx) return;
-        ctx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
-        ctx.globalAlpha = 0.5;
-        for (const p of particles) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-          ctx.fillStyle = '#6366f1';
-          ctx.fill();
-          p.x += p.dx;
-          p.y += p.dy;
-          if (particlesCanvas && (p.x < 0 || p.x > particlesCanvas.width)) p.dx *= -1;
-          if (particlesCanvas && (p.y < 0 || p.y > particlesCanvas.height)) p.dy *= -1;
-        }
-        requestAnimationFrame(animateParticles);
-      }
-      animateParticles();
-    }
       // 1. Fondo de partículas (background-canvas)
       const backgroundCanvas = document.getElementById('background-canvas') as HTMLCanvasElement | null;
       if (backgroundCanvas) {
@@ -80,7 +43,7 @@ export class HeroComponent implements AfterViewInit {
           requestAnimationFrame(animateParticles);
         }
         animateParticles();
-      }
+    }
 
     // 2. Ondas animadas (waves-canvas)
     const wavesCanvas = document.getElementById('waves-canvas') as HTMLCanvasElement | null;
