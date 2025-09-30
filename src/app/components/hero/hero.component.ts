@@ -88,36 +88,63 @@ export class HeroComponent implements AfterViewInit {
       window.addEventListener('resize', resizePolygons);
       resizePolygons();
       let angle = 0;
-      function drawPolygon(cx: number, cy: number, r: number, sides: number, rotation: number, color: string) {
-        if (!ctx) return;
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(rotation);
-        ctx.beginPath();
-        for (let i = 0; i < sides; i++) {
-          const theta = (2 * Math.PI * i) / sides;
-          ctx.lineTo(r * Math.cos(theta), r * Math.sin(theta));
-        }
-        ctx.closePath();
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 3;
-        ctx.globalAlpha = 0.7;
-        ctx.stroke();
-        ctx.restore();
-      }
-      function animatePolygons() {
-        if (!ctx) return;
-  if (!polygonsCanvas) return;
-  ctx.clearRect(0, 0, polygonsCanvas.width, polygonsCanvas.height);
-  const cx = polygonsCanvas.width/2;
-  const cy = polygonsCanvas.height/2 - 60;
-  drawPolygon(cx, cy, 60, 4, angle, '#6366f1');
-  drawPolygon(cx, cy, 40, 6, -angle*1.2, '#818cf8');
-  drawPolygon(cx, cy, 25, 3, angle*2, '#a5b4fc');
-        angle += 0.01;
-        requestAnimationFrame(animatePolygons);
-      }
-      animatePolygons();
+  let t = 0;
+
+  function drawDeformingPolygon(
+    ctx: CanvasRenderingContext2D,
+    cx: number,
+    cy: number,
+    r: number,
+    sides: number,
+    rotation: number,
+    color: string,
+    t: number,
+    noiseFactor: number
+  ) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(rotation);
+    ctx.beginPath();
+
+    for (let i = 0; i < sides; i++) {
+      const theta = (2 * Math.PI * i) / sides;
+      const deform = Math.sin(t + i * 1.5) * noiseFactor; // deformación vértices
+      const radius = r + deform;
+      const x = radius * Math.cos(theta);
+      const y = radius * Math.sin(theta);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+
+    ctx.closePath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.globalAlpha = 0.8;
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = color;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function animatePolygons() {
+    if (!ctx || !polygonsCanvas) return;
+    ctx.clearRect(0, 0, polygonsCanvas.width, polygonsCanvas.height);
+    const cx = polygonsCanvas.width / 2;
+    const cy = polygonsCanvas.height / 2 - 60;
+
+    // Capas de polígonos deformados
+    drawDeformingPolygon(ctx, cx, cy, 140, 6, angle, "#6366f1", t, 15);
+    drawDeformingPolygon(ctx, cx, cy, 100, 6, angle, "#818cf8", t + 2, 12);
+    drawDeformingPolygon(ctx, cx, cy, 70, 6, angle, "#a5b4fc", t + 4, 10);
+    drawDeformingPolygon(ctx, cx, cy, 40, 6, angle, "#c7d2fe", t + 6, 8);
+
+    angle += 0.002; // rotación suave
+    t += 0.03;      // deformación continua
+
+    requestAnimationFrame(animatePolygons);
+  }
+
+  animatePolygons();
     }
   }
 }
