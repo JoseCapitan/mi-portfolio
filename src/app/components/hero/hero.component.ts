@@ -77,17 +77,18 @@ export class HeroComponent implements AfterViewInit {
     }
 
     // 3. Polígonos animados (hero-polygons-canvas)
-    const polygonsCanvas = document.getElementById('hero-polygons-canvas') as HTMLCanvasElement | null;
-    if (polygonsCanvas) {
-      const ctx = polygonsCanvas.getContext('2d');
-      function resizePolygons() {
-        if (!polygonsCanvas) return;
-        polygonsCanvas.width = window.innerWidth;
-        polygonsCanvas.height = window.innerHeight;
-      }
-      window.addEventListener('resize', resizePolygons);
-      resizePolygons();
-      let angle = 0;
+const polygonsCanvas = document.getElementById('hero-polygons-canvas') as HTMLCanvasElement | null;
+if (polygonsCanvas) {
+  const ctx = polygonsCanvas.getContext('2d');
+  function resizePolygons() {
+    if (!polygonsCanvas) return;
+    polygonsCanvas.width = window.innerWidth;
+    polygonsCanvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizePolygons);
+  resizePolygons();
+
+  let angle = 0;
   let t = 0;
 
   function drawDeformingPolygon(
@@ -104,25 +105,43 @@ export class HeroComponent implements AfterViewInit {
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(rotation);
+
     ctx.beginPath();
+    const vertices: { x: number; y: number }[] = [];
 
     for (let i = 0; i < sides; i++) {
       const theta = (2 * Math.PI * i) / sides;
-      const deform = Math.sin(t + i * 1.5) * noiseFactor; // deformación vértices
-      const radius = r + deform;
+      const noise = Math.sin(t * 0.5 + i * 1.5) * noiseFactor;
+      const radius = r + noise;
       const x = radius * Math.cos(theta);
       const y = radius * Math.sin(theta);
+      vertices.push({ x, y });
+
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     }
 
     ctx.closePath();
+
+    // ✨ Estilo neón
     ctx.strokeStyle = color;
-    ctx.lineWidth = 2;
-    ctx.globalAlpha = 0.8;
-    ctx.shadowBlur = 15;
-    ctx.shadowColor = color;
+    ctx.lineWidth = 4; // más gordito
+    ctx.globalAlpha = 0.9;
+
+    ctx.shadowBlur = 20;       // intensidad del glow
+    ctx.shadowColor = color;   // mismo color que el trazo
     ctx.stroke();
+
+    // 🔵 Dibujar los puntos de los vértices con glow también
+    for (const v of vertices) {
+      ctx.beginPath();
+      ctx.arc(v.x, v.y, 3, 0, 2 * Math.PI); // puntos más grandes
+      ctx.fillStyle = color;
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = color;
+      ctx.fill();
+    }
+
     ctx.restore();
   }
 
@@ -132,19 +151,19 @@ export class HeroComponent implements AfterViewInit {
     const cx = polygonsCanvas.width / 2;
     const cy = polygonsCanvas.height / 2 - 60;
 
-    // Capas de polígonos deformados
-    drawDeformingPolygon(ctx, cx, cy, 140, 6, angle, "#6366f1", t, 15);
-    drawDeformingPolygon(ctx, cx, cy, 100, 6, angle, "#818cf8", t + 2, 12);
-    drawDeformingPolygon(ctx, cx, cy, 70, 6, angle, "#a5b4fc", t + 4, 10);
-    drawDeformingPolygon(ctx, cx, cy, 40, 6, angle, "#c7d2fe", t + 6, 8);
+    // Capas de polígonos con efecto neón
+    drawDeformingPolygon(ctx, cx, cy, 200, 6, angle, "#061740", t, 50);
+    drawDeformingPolygon(ctx, cx, cy, 150, 6, angle, "#061740", t + 2, 25);
+    drawDeformingPolygon(ctx, cx, cy, 90, 6, angle, "#061740", t + 4, 35);
+    drawDeformingPolygon(ctx, cx, cy, 55, 6, angle, "#061740", t + 6, 40);
 
-    angle += 0.002; // rotación suave
-    t += 0.03;      // deformación continua
+    angle += 0.002;
+    t += 0.03;
 
     requestAnimationFrame(animatePolygons);
   }
 
   animatePolygons();
-    }
+}
   }
 }
