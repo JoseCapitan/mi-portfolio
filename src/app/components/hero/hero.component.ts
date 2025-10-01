@@ -22,6 +22,16 @@ export class HeroComponent implements AfterViewInit {
       }
       window.addEventListener('resize', resizeBg);
       resizeBg();
+
+      // Animación de aparición del hero
+      const hero = document.getElementById('hero');
+    if (hero) {
+      setTimeout(() => {
+        hero.classList.remove('opacity-0', '-translate-y-10');
+        hero.classList.add('opacity-100', 'translate-y-0');
+      }, 400); // Delay para que no aparezca instantáneo
+    } 
+
       // Partículas
       const particles = Array.from({ length: 60 }, () => ({
         x: Math.random() * (backgroundCanvas?.width ?? window.innerWidth),
