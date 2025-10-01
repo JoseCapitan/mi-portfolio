@@ -1,11 +1,12 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { AboutComponent } from '../about/about.component';
+import { TimelineComponent } from "../timeline/timeline.component";
 
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss'],
-  imports: [AboutComponent],
+  imports: [AboutComponent, TimelineComponent],
 })
 export class HeroComponent implements AfterViewInit {
   ngAfterViewInit(): void {
