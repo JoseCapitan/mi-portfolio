@@ -1,34 +1,38 @@
 <section
   id="timeline"
   #timelineSection
-  class="relative max-w-4xl w-full mt-16 px-6 py-8 mx-auto text-white opacity-0 -translate-x-12 transition-all duration-1500 ease-in-out"
+  class="relative max-w-4xl w-full mt-16 px-6 py-8 mx-auto text-white opacity-0 translate-y-12 transition-all duration-1500 ease-in-out"
 >
   <!-- Título -->
   <h3 class="text-4xl font-bold text-center mb-12">Línea cronológica</h3>
 
-  <!-- Línea vertical central -->
-  <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-cyan-400"></div>
+  <div class="relative flex flex-col gap-12">
+    <!-- Línea general que conecta todos los items -->
+    <div class="absolute top-0 bottom-0 left-4 w-0.5 bg-cyan-400 opacity-30"></div>
 
-  <!-- Items del timeline -->
-  @for (item of items; track item; let i = $index) {
-    <div
-      class="mb-12 flex items-center w-full opacity-0 -translate-x-12 transition-all duration-1500 ease-in-out"
-      [class.flex-row-reverse]="i % 2 !== 0"
-      #timelineItem
-    >
-      <!-- Año -->
-      <div class="w-24 flex-shrink-0 text-white font-bold bg-cyan-400 rounded p-2 text-center">
-        {{item.year}}
+    @for (item of items; track item; let i = $index) {
+      <div
+        class="relative flex items-start w-full opacity-0 translate-y-12 transition-all duration-1500 ease-in-out"
+        #timelineItem
+      >
+        <!-- Punto con año pegado a la caja -->
+        <div class="relative flex flex-col items-start mr-4">
+          <span
+            class="bg-gray-800 text-cyan-400 font-bold px-3 py-1 rounded shadow"
+          >
+            {{ item.year }}
+          </span>
+        </div>
+
+        <!-- Contenido -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-left flex-1">
+          <h5 class="text-lg font-semibold text-cyan-400">{{ item.title }}</h5>
+          <p class="text-gray-300 mt-2">{{ item.description }}</p>
+        </div>
       </div>
-
-      <!-- Punto en la línea -->
-      <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full z-10"></div>
-
-      <!-- Contenido -->
-      <div class="ml-6 bg-gray-800 p-6 rounded-lg shadow-lg text-left flex-1 max-w-md">
-        <h5 class="text-lg font-semibold text-cyan-400">{{item.title}}</h5>
-        <p class="text-gray-300 mt-2">{{item.description}}</p>
-      </div>
-    </div>
-  }
+    }
+  </div>
 </section>
+
+
+

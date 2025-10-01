@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HeroComponent } from './components/hero/hero.component';
 import { ProjectsComponent } from './components/projects/projects.component';
-import { TimelineComponent } from './components/timeline/timeline.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 export const routes: Routes = [
