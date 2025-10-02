@@ -1,12 +1,88 @@
-<nav class="fixed top-0 left-0 right-0 px-20 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex justify-between items-center">
-  <a routerLink="/" class="flex items-center space-x-3 text-xl text-white font-bold">
-  <img src="assets/C3.png" alt="Logo" class="h-20 w-20" />
-  <span>José Capitán</span>
-</a>
-  <div class="flex space-x-6">
-    <a routerLink="/" routerLinkActive="text-gray-400" class="text-white hover:text-cyan-400">Inicio</a>
-    <a routerLink="/proyectos" routerLinkActive="text-gray-400" class="text-white hover:text-cyan-400">Proyectos</a>
-    <a routerLink="/curriculum" routerLinkActive="text-gray-400" class="text-white hover:text-cyan-400">Currículum</a>
-    <a routerLink="/contacto" routerLinkActive="text-gray-400" class="text-white hover:text-cyan-400">Contacto</a>
+<nav
+  class="fixed top-0 left-0 right-0 px-20 bg-black bg-opacity-50 backdrop-blur-sm z-50"
+>
+  <div class="flex justify-between items-center">
+    <!-- Logo + Nombre -->
+    <a
+      routerLink="/"
+      class="flex items-center space-x-3 text-xl text-white font-bold"
+    >
+      <img src="assets/C3.png" alt="Logo" class="h-20 w-20" />
+      <span>José Capitán</span>
+    </a>
+
+    <!-- Enlaces (desktop) -->
+    <div class="hidden md:flex space-x-6">
+      <a
+        routerLink="/"
+        routerLinkActive="text-gray-400"
+        class="text-white hover:text-cyan-400"
+        >Inicio</a
+      >
+      <a
+        routerLink="/proyectos"
+        routerLinkActive="text-gray-400"
+        class="text-white hover:text-cyan-400"
+        >Proyectos</a
+      >
+      <a
+        routerLink="/curriculum"
+        routerLinkActive="text-gray-400"
+        class="text-white hover:text-cyan-400"
+        >Currículum</a
+      >
+      <a
+        routerLink="/contacto"
+        routerLinkActive="text-gray-400"
+        class="text-white hover:text-cyan-400"
+        >Contacto</a
+      >
+    </div>
+
+    <!-- Botón hamburguesa (móvil) -->
+    <button
+      class="md:hidden text-white text-3xl focus:outline-none"
+      (click)="isMenuOpen = !isMenuOpen"
+    >
+      ☰
+    </button>
   </div>
+
+  <!-- Menú desplegable móvil -->
+  @if (isMenuOpen) {
+    <div
+      class="md:hidden mt-4 bg-black bg-opacity-90 backdrop-blur-sm rounded-lg px-6 py-4 space-y-4"
+    >
+      <a
+        routerLink="/"
+        routerLinkActive="text-gray-400"
+        class="block text-white hover:text-cyan-400"
+        (click)="isMenuOpen = false"
+        >Inicio</a
+      >
+      <a
+        routerLink="/proyectos"
+        routerLinkActive="text-gray-400"
+        class="block text-white hover:text-cyan-400"
+        (click)="isMenuOpen = false"
+        >Proyectos</a
+      >
+      <a
+        routerLink="/curriculum"
+        routerLinkActive="text-gray-400"
+        class="block text-white hover:text-cyan-400"
+        (click)="isMenuOpen = false"
+        >Currículum</a
+      >
+      <a
+        routerLink="/contacto"
+        routerLinkActive="text-gray-400"
+        class="block text-white hover:text-cyan-400"
+        (click)="isMenuOpen = false"
+        >Contacto</a
+      >
+    </div>
+  }
 </nav>
+
+
