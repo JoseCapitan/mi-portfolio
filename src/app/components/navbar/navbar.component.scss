@@ -23,6 +23,7 @@
 .nav-link:hover::after {
   width: 100%;
   transform: translateX(-50%) scaleX(1);
+  color: #06b6d4;
 }
 
 /* Efecto cuando está activo (ruta actual) */
