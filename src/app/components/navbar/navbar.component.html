@@ -15,26 +15,30 @@
     <div class="hidden md:flex space-x-6">
       <a
         routerLink="/"
-        routerLinkActive="text-gray-400"
-        class="text-white hover:text-cyan-400"
+        routerLinkActive="!text-cyan-400 underline"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-white hover:text-cyan-400 font-bold"
         >Inicio</a
       >
       <a
         routerLink="/proyectos"
-        routerLinkActive="text-gray-400"
-        class="text-white hover:text-cyan-400"
+        routerLinkActive="!text-cyan-400 underline"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-white hover:text-cyan-400 font-bold"
         >Proyectos</a
       >
       <a
         routerLink="/curriculum"
-        routerLinkActive="text-gray-400"
-        class="text-white hover:text-cyan-400"
+        routerLinkActive="!text-cyan-400 underline"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-white hover:text-cyan-400 font-bold"
         >Currículum</a
       >
       <a
         routerLink="/contacto"
-        routerLinkActive="text-gray-400"
-        class="text-white hover:text-cyan-400"
+        routerLinkActive="!text-cyan-400 underline"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-white hover:text-cyan-400 font-bold"
         >Contacto</a
       >
     </div>
