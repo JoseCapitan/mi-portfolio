@@ -1,0 +1,37 @@
+.nav-link {
+  position: relative;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease; /* Para la transición de color */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; /* Distancia del subrayado desde el texto */
+  left: 50%;
+  width: 0;
+  height: 3px; /* Grosor del subrayado */
+  background-color: currentColor; /* Usa el color actual del texto (cian o blanco) */
+  transform: translateX(-50%) scaleX(0); /* Centrado y escalado inicial */
+  transform-origin: center;
+  transition: width 0.4s ease, transform 0.4s ease; /* Transición suave */
+}
+
+/* Efecto al hacer hover */
+.nav-link:hover::after {
+  width: 100%;
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Efecto cuando está activo (ruta actual) */
+.nav-link.active {
+  color: #06b6d4; /* Color cyan-400 o el que prefieras */
+}
+
+.nav-link.active::after {
+  width: 100%;
+  transform: translateX(-50%) scaleX(1);
+  background-color: currentColor; /* Asegura que el subrayado también sea cyan */
+}
