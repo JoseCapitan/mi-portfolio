@@ -1,10 +1,11 @@
 <section class="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-950 pt-20">
   <!-- Contenedor centrado -->
-  <div class="relative w-full flex flex-col max-w-4xl mx-auto py-8 z-10">
+  <div id="projects-section" class="relative w-full flex flex-col max-w-4xl mx-auto py-8 z-10 opacity-0 -translate-y-10 transition-all duration-700 ease-out">
     <h3 class="text-4xl font-bold text-center mb-12 text-white">Proyectos</h3>
 
+    
     @for (project of projects; track project) {
-      <app-project-card [project]="project"></app-project-card>
+      <app-project-card [project]="project" class="mb-16"></app-project-card>
     }
   </div>
 </section>

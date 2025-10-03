@@ -9,6 +9,17 @@ import { ProjectCardComponent, Project } from "../project-card/project-card.comp
 })
 export class ProjectsComponent {
 
+  ngAfterViewInit(): void {
+  const projectsSection = document.getElementById('projects-section');
+  if (projectsSection) {
+    setTimeout(() => {
+      projectsSection.classList.remove('opacity-0', '-translate-y-10');
+      projectsSection.classList.add('opacity-100', 'translate-y-0');
+    }, 300); // pequeño delay para que no aparezca instantáneo
+  }
+}
+
+
 projects: Project[] = [
     {
       logo: 'assets/vitaflow.png',
