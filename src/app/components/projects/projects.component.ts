@@ -1,54 +1,58 @@
 import { Component } from '@angular/core';
-import { ProjectCardComponent, Project } from "../project-card/project-card.component";
+import {
+  ProjectCardComponent,
+  Project,
+} from '../project-card/project-card.component';
 
 @Component({
   selector: 'app-projects',
   imports: [ProjectCardComponent],
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+  styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent {
-
   ngAfterViewInit(): void {
-  const projectsSection = document.getElementById('projects-section');
-  if (projectsSection) {
-    setTimeout(() => {
-      projectsSection.classList.remove('opacity-0', '-translate-y-10');
-      projectsSection.classList.add('opacity-100', 'translate-y-0');
-    }, 300); // pequeño delay para que no aparezca instantáneo
+    const projectsSection = document.getElementById('projects-section');
+    if (projectsSection) {
+      setTimeout(() => {
+        projectsSection.classList.remove('opacity-0', '-translate-y-10');
+        projectsSection.classList.add('opacity-100', 'translate-y-0');
+      }, 300); // pequeño delay para que no aparezca instantáneo
+    }
   }
-}
 
-
-projects: Project[] = [
+  projects: Project[] = [
     {
       logo: 'assets/vitaflow.png',
       title: 'Aplicación Web VitaFlow',
-      description: 'Uso de Node.js, Express y MongoDB para gestionar cursos, usuarios y clases. Implementa autenticación segura y paneles de administración.',
-      technologies: ['HTML', 'CSS', 'Node.js', 'MongoDB'],
+      description:
+        'Vitaflow es una aplicación web de nutrición y seguimiento de hábitos saludables, diseñada para gestionar planes de alimentación y monitorizar el progreso de los usuarios. Permite registrar comidas, objetivos y datos de salud de manera visual y dinámica.',
+      technologies: ['Angular', 'TypeScript', 'Symfony', 'Docker', 'PostgreSQL', 'Node.js', 'Tailwind CSS', 'Git'],
       year: 2025,
       status: 'En curso',
-      progress: 70
+      progress: 70,
     },
-    {
-      logo: 'assets/gestor.png',
-      title: 'Aplicación Web Gestor de Proyectos',
-      description: 'Uso de Flutter y Firebase para crear una app móvil que calcula rutas de Semana Santa utilizando algoritmos genéticos, con mapas interactivos y gestión de perfiles.',
-      technologies: ['Flutter', 'Firebase'],
-      year: 2025,
-      status: 'Terminado',
-      progress: 100
-    },
+
     {
       logo: 'assets/portfolio.png',
       title: 'Aplicación Web de mi portfolio',
-      description: 'Uso de Flutter y Firebase para crear una app móvil que calcula rutas de Semana Santa utilizando algoritmos genéticos, con mapas interactivos y gestión de perfiles.',
-      technologies: ['Flutter', 'Firebase'],
+      description:
+        'Portfolio web que reúne todos mis proyectos y experiencia profesional. Incluye secciones de inicio, proyectos, currículum, contacto, animaciones en el hero y fondo dinámico con partículas y ondas, mostrando un diseño moderno y responsivo.',
+      technologies: ['Angular', 'TypeScript', 'Node.js', 'Canvas API', 'Tailwind CSS', 'HTML5', 'Git'],
       year: 2025,
       status: 'Terminado',
-      progress: 100
+      progress: 100,
+    },
+      {
+      logo: 'assets/gestor.png',
+      title: 'Aplicación Web Gestor de Proyectos',
+      description:
+        'Aplicación de gestión de proyectos para equipos de trabajo, con sistema de usuarios y roles. Los administradores pueden crear, asignar y monitorizar proyectos y tareas de todos los usuarios, mientras que los miembros pueden gestionar sus propias tareas. Perfecta para entornos pequeñas empresas.',
+      technologies: ['PHP', 'MySQL', 'phpMyAdmin', 'JavaScript', 'Bootstrap', 'HTML', 'CSS'],
+      year: 2024,
+      status: 'Terminado',
+      progress: 100,
     }
-
   ];
 
   handleViewResult(project: Project) {
