@@ -1,11 +1,10 @@
-<section class="min-h-screen flex flex-col items-center px-4 py-20">
-  <h2 class="text-3xl font-bold mb-8">Proyectos</h2>
-  <div class="max-w-4xl w-full">
-    <!-- Aquí puedes listar tus proyectos -->
-    <div class="p-4 border border-gray-700 rounded-lg mb-4">
-      <h3 class="text-xl font-semibold">Nombre del Proyecto</h3>
-      <p>Descripción corta del proyecto.</p>
-      <button class="mt-2 text-blue-400 hover:underline">Ver más</button>
-    </div>
-  </div>
+<section class="relative max-w-4xl w-full mt-16 px-4 mx-auto">
+  <h3 class="text-4xl font-bold text-center mb-12 text-white">Proyectos</h3>
+
+  @for (project of projects; track project) {
+    <app-project-card
+      [project]="project"
+      (viewResult)="handleViewResult($event)"
+    ></app-project-card>
+  }
 </section>
