@@ -23,7 +23,7 @@ export class ProjectsComponent {
 
   projects: Project[] = [
     {
-      logo: 'assets/vitaflow.png',
+      logo: 'assets/vita.png',
       title: 'Aplicación Web VitaFlow',
       description:
         'Vitaflow es una aplicación web de nutrición y seguimiento de hábitos saludables, diseñada para gestionar planes de alimentación y monitorizar el progreso de los usuarios. Permite registrar comidas, objetivos y datos de salud de manera visual y dinámica.',
