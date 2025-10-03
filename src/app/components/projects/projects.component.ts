@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   ProjectCardComponent,
   Project,
@@ -11,7 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
   ngAfterViewInit(): void {
     const projectsSection = document.getElementById('projects-section');
     if (projectsSection) {
@@ -61,6 +61,11 @@ export class ProjectsComponent {
       demo: 'https://player.vimeo.com/video/1124257167?'
     }
   ];
+
+ngOnInit() {
+    // Fuerza el scroll al inicio cada vez que se carga el componente
+    window.scrollTo(0, 0);
+  }
 
 
   // Modal de Video

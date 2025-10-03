@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { AboutComponent } from '../about/about.component';
 import { TimelineComponent } from "../timeline/timeline.component";
 
@@ -8,7 +8,13 @@ import { TimelineComponent } from "../timeline/timeline.component";
   styleUrls: ['./hero.component.scss'],
   imports: [AboutComponent, TimelineComponent],
 })
-export class HeroComponent implements AfterViewInit {
+export class HeroComponent implements AfterViewInit, OnInit {
+
+  ngOnInit() {
+    // Fuerza el scroll al inicio cada vez que se carga el componente
+    window.scrollTo(0, 0);
+  }
+
   ngAfterViewInit(): void {
   
 
