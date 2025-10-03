@@ -30,7 +30,7 @@ export class ProjectsComponent {
       technologies: ['Angular', 'TypeScript', 'Symfony', 'Docker', 'PostgreSQL', 'Node.js', 'Tailwind CSS', 'Git'],
       year: 2025,
       status: 'En curso',
-      progress: 70,
+      progress: 60,
     },
 
     {
@@ -47,16 +47,29 @@ export class ProjectsComponent {
       logo: 'assets/gestor.png',
       title: 'Aplicación Web Gestor de Proyectos',
       description:
-        'Aplicación de gestión de proyectos para equipos de trabajo, con sistema de usuarios y roles. Los administradores pueden crear, asignar y monitorizar proyectos y tareas de todos los usuarios, mientras que los miembros pueden gestionar sus propias tareas. Perfecta para entornos pequeñas empresas.',
+        'Aplicación de gestión de proyectos para equipos de trabajo, con sistema de usuarios y roles. Los administradores pueden crear, asignar y monitorizar proyectos y tareas de todos los usuarios, mientras que los miembros pueden gestionar sus propias tareas. Perfecta para organizar pequeñas empresas.',
       technologies: ['PHP', 'MySQL', 'phpMyAdmin', 'JavaScript', 'Bootstrap', 'HTML', 'CSS'],
       year: 2024,
       status: 'Terminado',
       progress: 100,
+      github: 'https://github.com/JoseCapitan/Gestor-de-Proyectos',
+      demo: 'https://gestor-proyectos-josecapitan.000webhostapp.com/',
     }
   ];
 
-  handleViewResult(project: Project) {
-    console.log('Ver resultado de:', project.title);
-    // Aquí puedes abrir una modal, navegar a otra página, etc.
-  }
+selectedProject: Project | null = null;
+isModalOpen = false;
+
+handleViewResult(project: Project) {
+  this.selectedProject = project;
+  this.isModalOpen = true;
+}
+
+// Cerrar modal
+closeModal() {
+  this.isModalOpen = false;
+  this.selectedProject = null;
+}
+
+
 }

@@ -8,6 +8,8 @@ export interface Project {
   year: number;
   status: 'Terminado' | 'Pausado' | 'En curso';
   progress: number;
+  github?: string;
+  demo?: string;
 }
 
 @Component({
