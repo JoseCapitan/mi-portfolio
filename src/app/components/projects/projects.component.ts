@@ -16,8 +16,8 @@ projects: Project[] = [
       description: 'Uso de Node.js, Express y MongoDB para gestionar cursos, usuarios y clases. Implementa autenticación segura y paneles de administración.',
       technologies: ['HTML', 'CSS', 'Node.js', 'MongoDB'],
       year: 2025,
-      status: 'Terminado',
-      progress: 100
+      status: 'En curso',
+      progress: 70
     },
     {
       logo: 'assets/gestor.png',
@@ -25,9 +25,19 @@ projects: Project[] = [
       description: 'Uso de Flutter y Firebase para crear una app móvil que calcula rutas de Semana Santa utilizando algoritmos genéticos, con mapas interactivos y gestión de perfiles.',
       technologies: ['Flutter', 'Firebase'],
       year: 2025,
-      status: 'Pausado',
-      progress: 70
+      status: 'Terminado',
+      progress: 100
+    },
+    {
+      logo: 'assets/portfolio.png',
+      title: 'Aplicación Web de mi portfolio',
+      description: 'Uso de Flutter y Firebase para crear una app móvil que calcula rutas de Semana Santa utilizando algoritmos genéticos, con mapas interactivos y gestión de perfiles.',
+      technologies: ['Flutter', 'Firebase'],
+      year: 2025,
+      status: 'Terminado',
+      progress: 100
     }
+
   ];
 
   handleViewResult(project: Project) {
