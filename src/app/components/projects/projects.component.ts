@@ -31,6 +31,8 @@ export class ProjectsComponent {
       year: 2025,
       status: 'En curso',
       progress: 60,
+      github: 'https://github.com/JoseCapitan/VitaFlow',
+      demo: '',
     },
 
     {
@@ -42,6 +44,8 @@ export class ProjectsComponent {
       year: 2025,
       status: 'Terminado',
       progress: 100,
+      github: 'https://github.com/JoseCapitan/mi-portfolio',
+      demo: '',
     },
       {
       logo: 'assets/gestor.png',
@@ -53,7 +57,7 @@ export class ProjectsComponent {
       status: 'Terminado',
       progress: 100,
       github: 'https://github.com/JoseCapitan/Gestor-de-Proyectos',
-      demo: 'https://gestor-proyectos-josecapitan.000webhostapp.com/',
+      demo: '',
     }
   ];
 
