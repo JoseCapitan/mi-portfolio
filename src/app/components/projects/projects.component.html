@@ -1,11 +1,76 @@
-<section class="min-h-screen flex flex-col items-center px-4 py-20">
-  <h2 class="text-3xl font-bold mb-8">Proyectos</h2>
-  <div class="max-w-4xl w-full">
-    <!-- Aquí puedes listar tus proyectos -->
-    <div class="p-4 border border-gray-700 rounded-lg mb-4">
-      <h3 class="text-xl font-semibold">Nombre del Proyecto</h3>
-      <p>Descripción corta del proyecto.</p>
-      <button class="mt-2 text-blue-400 hover:underline">Ver más</button>
+<section
+  class="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-950 pt-20"
+>
+  <!-- Contenedor centrado -->
+  <div
+    id="projects-section"
+    class="relative w-full flex flex-col max-w-4xl mx-auto py-8 z-10 opacity-0 -translate-y-10 transition-all duration-700 ease-out"
+  >
+    <h3 class="text-4xl font-bold text-center mb-12 text-white">Proyectos</h3>
+
+    @for (project of projects; track project) {
+    <app-project-card
+      [project]="project"
+      (viewResult)="handleViewResult($event)"
+      (viewImage)="openImageModal($event)"
+      class="mb-16"
+    ></app-project-card>
+    }
+  </div>
+  <!-- Modal -->
+  @if (isModalOpen && selectedProject) {
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+  >
+    <div class="bg-gray-950 rounded-xl p-6 w-80 md:w-96 shadow-lg relative">
+      <!-- Botón cerrar -->
+      <button
+        class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl font-bold"
+        (click)="closeModal()"
+      >
+        &times;
+      </button>
+
+      <!-- Título -->
+      <h3 class="text-xl font-bold text-cyan-400 mb-4 text-center">
+        {{ selectedProject.title }}
+      </h3>
+
+      <!-- Enlaces -->
+      <div class="flex flex-col gap-4">
+        @if (selectedProject.demo) {
+        <a
+          href="{{ selectedProject.demo }}"
+          target="_blank"
+          class="text-white bg-cyan-400 hover:bg-cyan-500 rounded-lg py-2 text-center font-semibold transition-colors"
+        >
+          Abrir Demo
+        </a>
+        } @if (selectedProject.github) {
+        <a
+          href="{{ selectedProject.github }}"
+          target="_blank"
+          class="text-white bg-gray-700 hover:bg-gray-600 rounded-lg py-2 text-center font-semibold transition-colors"
+        >
+          Abrir GitHub
+        </a>
+        }
+      </div>
     </div>
   </div>
+  }
+  <!-- Modal Imagen -->
+  @if (isImageModalOpen && selectedImage) {
+    <div
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+      (click)="closeImageModal()"
+    >
+      <img
+        [src]="selectedImage"
+        alt="Imagen ampliada"
+        class="max-w-[90vw] max-h-[90vh] rounded-lg shadow-lg"
+        (click)="$event.stopPropagation()"
+      />
+    </div>
+  }
 </section>
