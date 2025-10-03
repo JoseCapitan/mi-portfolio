@@ -1,13 +1,13 @@
 <nav
-  class="fixed top-0 left-0 right-0 px-20 bg-black bg-opacity-50 backdrop-blur-sm z-50"
+  class="border-b border-cyan-800 fixed top-0 left-0 right-0 px-6 md:px-20 bg-gradient-to-r from-black via-black to-cyan-950 bg-opacity-50 backdrop-blur-sm z-50"
 >
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center py-3">
     <!-- Logo + Nombre -->
     <a
       routerLink="/"
       class="flex items-center space-x-3 text-xl text-white font-bold"
     >
-      <img src="assets/C3.png" alt="Logo" class="h-20 w-20" />
+      <img src="assets/C3.png" alt="Logo" class="h-14 w-14" />
       <span>José Capitán</span>
     </a>
 
@@ -20,25 +20,13 @@
         class="nav-link"
         >Inicio</a
       >
-      <a
-        routerLink="/proyectos"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="nav-link"
+      <a routerLink="/proyectos" routerLinkActive="active" class="nav-link"
         >Proyectos</a
       >
-      <a
-        routerLink="/curriculum"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="nav-link"
+      <a routerLink="/curriculum" routerLinkActive="active" class="nav-link"
         >Currículum</a
       >
-      <a
-        routerLink="/contacto"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="nav-link"
+      <a routerLink="/contacto" routerLinkActive="active" class="nav-link"
         >Contacto</a
       >
     </div>
@@ -48,49 +36,43 @@
       class="md:hidden text-white focus:outline-none"
       (click)="isMenuOpen = !isMenuOpen"
     >
-    <img
-    src="assets/menu.png"  
-    alt="Menú"
-    class="w-10 h-10"       
-    />
+      <img src="assets/menu.png" alt="Menú" class="w-9 h-9" />
     </button>
   </div>
 
   <!-- Menú desplegable móvil -->
-  @if (isMenuOpen) {
+  <div
+    class="md:hidden overflow-hidden transition-all duration-1000 ease-in-out"
+    [class.max-h-0]="!isMenuOpen"
+    [class.max-h-96]="isMenuOpen"
+  >
     <div
-      class="md:hidden mt-4 bg-black bg-opacity-90 backdrop-blur-sm rounded-lg px-6 py-4 space-y-4"
+      class="px-6 py-6 flex flex-col items-center space-y-5 bg-opacity-40 backdrop-blur-md"
     >
       <a
         routerLink="/"
-        routerLinkActive="text-gray-400"
         class="block text-white hover:text-cyan-400"
         (click)="isMenuOpen = false"
         >Inicio</a
       >
       <a
         routerLink="/proyectos"
-        routerLinkActive="text-gray-400"
         class="block text-white hover:text-cyan-400"
         (click)="isMenuOpen = false"
         >Proyectos</a
       >
       <a
         routerLink="/curriculum"
-        routerLinkActive="text-gray-400"
         class="block text-white hover:text-cyan-400"
         (click)="isMenuOpen = false"
         >Currículum</a
       >
       <a
         routerLink="/contacto"
-        routerLinkActive="text-gray-400"
         class="block text-white hover:text-cyan-400"
         (click)="isMenuOpen = false"
         >Contacto</a
       >
     </div>
-  }
+  </div>
 </nav>
-
-
