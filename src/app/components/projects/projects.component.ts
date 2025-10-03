@@ -3,6 +3,7 @@ import {
   ProjectCardComponent,
   Project,
 } from '../project-card/project-card.component';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects',
@@ -57,12 +58,14 @@ export class ProjectsComponent {
       status: 'Terminado',
       progress: 100,
       github: 'https://github.com/JoseCapitan/Gestor-de-Proyectos',
-      demo: '',
+      demo: 'https://player.vimeo.com/video/1124257167?'
     }
   ];
 
 selectedProject: Project | null = null;
 isModalOpen = false;
+
+constructor(private sanitizer: DomSanitizer) {}
 
 handleViewResult(project: Project) {
   this.selectedProject = project;
@@ -74,6 +77,10 @@ closeModal() {
   this.isModalOpen = false;
   this.selectedProject = null;
 }
+
+getSafeUrl(url: string | undefined): SafeResourceUrl {
+    return url ? this.sanitizer.bypassSecurityTrustResourceUrl(url) : '';
+  }
 
 
 }
