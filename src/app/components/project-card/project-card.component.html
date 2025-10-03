@@ -6,7 +6,8 @@
     <img
       [src]="project.logo"
       alt="{{ project.title }}"
-      class="w-52 h-52 rounded-md object-cover"
+      class="w-64 h-64 rounded-md object-contain cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110"
+      (click)="onImageClick()"
     />
   </div>
 

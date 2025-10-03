@@ -1,16 +1,27 @@
-<section class="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-950 pt-20">
+<section
+  class="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-950 pt-20"
+>
   <!-- Contenedor centrado -->
-  <div id="projects-section" class="relative w-full flex flex-col max-w-4xl mx-auto py-8 z-10 opacity-0 -translate-y-10 transition-all duration-700 ease-out">
+  <div
+    id="projects-section"
+    class="relative w-full flex flex-col max-w-4xl mx-auto py-8 z-10 opacity-0 -translate-y-10 transition-all duration-700 ease-out"
+  >
     <h3 class="text-4xl font-bold text-center mb-12 text-white">Proyectos</h3>
 
-    
     @for (project of projects; track project) {
-      <app-project-card [project]="project" (viewResult)="handleViewResult($event)" class="mb-16"></app-project-card>
+    <app-project-card
+      [project]="project"
+      (viewResult)="handleViewResult($event)"
+      (viewImage)="openImageModal($event)"
+      class="mb-16"
+    ></app-project-card>
     }
   </div>
   <!-- Modal -->
   @if (isModalOpen && selectedProject) {
-  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+  >
     <div class="bg-gray-950 rounded-xl p-6 w-80 md:w-96 shadow-lg relative">
       <!-- Botón cerrar -->
       <button
@@ -28,28 +39,38 @@
       <!-- Enlaces -->
       <div class="flex flex-col gap-4">
         @if (selectedProject.demo) {
-          <a
-            href="{{ selectedProject.demo }}"
-            target="_blank"
-            class="text-white bg-cyan-400 hover:bg-cyan-500 rounded-lg py-2 text-center font-semibold transition-colors"
-          >
-            Abrir Demo
-          </a>
-        }
-        @if (selectedProject.github) {
-          <a
-            href="{{ selectedProject.github }}"
-            target="_blank"
-            class="text-white bg-gray-700 hover:bg-gray-600 rounded-lg py-2 text-center font-semibold transition-colors"
-          >
-            Abrir GitHub
-          </a>
+        <a
+          href="{{ selectedProject.demo }}"
+          target="_blank"
+          class="text-white bg-cyan-400 hover:bg-cyan-500 rounded-lg py-2 text-center font-semibold transition-colors"
+        >
+          Abrir Demo
+        </a>
+        } @if (selectedProject.github) {
+        <a
+          href="{{ selectedProject.github }}"
+          target="_blank"
+          class="text-white bg-gray-700 hover:bg-gray-600 rounded-lg py-2 text-center font-semibold transition-colors"
+        >
+          Abrir GitHub
+        </a>
         }
       </div>
     </div>
   </div>
-}
-
+  }
+  <!-- Modal Imagen -->
+  @if (isImageModalOpen && selectedImage) {
+    <div
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+      (click)="closeImageModal()"
+    >
+      <img
+        [src]="selectedImage"
+        alt="Imagen ampliada"
+        class="max-w-[90vw] max-h-[90vh] rounded-lg shadow-lg"
+        (click)="$event.stopPropagation()"
+      />
+    </div>
+  }
 </section>
-
-

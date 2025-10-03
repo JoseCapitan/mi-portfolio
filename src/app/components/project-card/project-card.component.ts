@@ -21,8 +21,13 @@ export interface Project {
 export class ProjectCardComponent {
   @Input() project!: Project;
   @Output() viewResult = new EventEmitter<Project>();
+  @Output() viewImage = new EventEmitter<string>();
 
   onViewResult() {
     this.viewResult.emit(this.project);
+  }
+
+  onImageClick() {
+  this.viewImage.emit(this.project.logo);
   }
 }

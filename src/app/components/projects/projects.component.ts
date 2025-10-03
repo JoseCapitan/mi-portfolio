@@ -62,6 +62,8 @@ export class ProjectsComponent {
     }
   ];
 
+
+  // Modal de Video
 selectedProject: Project | null = null;
 isModalOpen = false;
 
@@ -81,6 +83,21 @@ closeModal() {
 getSafeUrl(url: string | undefined): SafeResourceUrl {
     return url ? this.sanitizer.bypassSecurityTrustResourceUrl(url) : '';
   }
+
+  // Modal de imagen
+selectedImage: string | null = null;
+isImageModalOpen = false;
+
+openImageModal(imgUrl: string) {
+  console.log('Imagen clickeada:', imgUrl); // ← Para depurar
+  this.selectedImage = imgUrl;
+  this.isImageModalOpen = true;
+}
+
+closeImageModal() {
+  this.isImageModalOpen = false;
+  this.selectedImage = null;
+}
 
 
 }
