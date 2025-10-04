@@ -28,81 +28,133 @@ export class ProjectsComponent implements OnInit {
       title: 'Aplicación Web VitaFlow',
       description:
         'Vitaflow es una aplicación web de nutrición y seguimiento de hábitos saludables, diseñada para gestionar planes de alimentación y monitorizar el progreso de los usuarios. Permite registrar comidas, objetivos y datos de salud de manera visual y dinámica.',
-      technologies: ['Angular', 'TypeScript', 'Symfony', 'Docker', 'PostgreSQL', 'Node.js', 'Tailwind CSS', 'Git'],
+      technologies: [
+        'Angular',
+        'TypeScript',
+        'Symfony',
+        'Docker',
+        'PostgreSQL',
+        'Node.js',
+        'Tailwind CSS',
+        'Git',
+      ],
       year: 2025,
       status: 'En curso',
-      progress: 60,
+      progress: 55,
       github: 'https://github.com/JoseCapitan/VitaFlow',
       demo: '',
     },
+
+    {
+  logo: 'assets/flow.png',
+  title: 'Gestor de Tareas Profesional FlowBoard',
+  description: `
+    Proyecto avanzado de gestión de tareas y proyectos, inspirado en Trello y Jira.
+    Esta versión profesional, desarrollada en Angular y Java con Spring Boot, representa 
+    la evolución de mi proyecto inicial en PHP, ofreciendo funcionalidades modernas 
+    de colaboración en equipo: tableros Kanban drag & drop, gestión de tareas con prioridades 
+    y deadlines, etiquetas, notificaciones en tiempo real y sistema de roles avanzado. 
+    Preparado para ser escalable y transformable en PWA.
+  `,
+  technologies: [
+    'Angular',
+    'TypeScript',
+    'Java',
+    'Spring Boot',
+    'JPA/Hibernate',
+    'PostgreSQL',
+    'Docker',
+    'WebSockets',
+    'Tailwind CSS',
+    'Git'
+  ],
+  year: 2025,
+  status: 'Pausado',
+  progress: 10,
+  github: '',
+  demo: ''
+},
 
     {
       logo: 'assets/portfolio.png',
       title: 'Aplicación Web de mi portfolio',
       description:
         'Portfolio web que reúne todos mis proyectos y experiencia profesional. Incluye secciones de inicio, proyectos, currículum, contacto, animaciones en el hero y fondo dinámico con partículas y ondas, mostrando un diseño moderno y responsivo.',
-      technologies: ['Angular', 'TypeScript', 'Node.js', 'Canvas API', 'Tailwind CSS', 'HTML5', 'Git'],
+      technologies: [
+        'Angular',
+        'TypeScript',
+        'Node.js',
+        'Canvas API',
+        'Tailwind CSS',
+        'HTML5',
+        'Git',
+      ],
       year: 2025,
       status: 'Terminado',
       progress: 100,
       github: 'https://github.com/JoseCapitan/mi-portfolio',
       demo: '',
     },
-      {
+    {
       logo: 'assets/gestor.png',
       title: 'Aplicación Web Gestor de Proyectos',
       description:
         'Aplicación de gestión de proyectos para equipos de trabajo, con sistema de usuarios y roles. Los administradores pueden crear, asignar y monitorizar proyectos y tareas de todos los usuarios, mientras que los miembros pueden gestionar sus propias tareas. Perfecta para organizar pequeñas empresas.',
-      technologies: ['PHP', 'MySQL', 'phpMyAdmin', 'JavaScript', 'Bootstrap', 'HTML', 'CSS'],
+      technologies: [
+        'PHP',
+        'MySQL',
+        'phpMyAdmin',
+        'JavaScript',
+        'Bootstrap',
+        'HTML',
+        'CSS',
+      ],
       year: 2024,
       status: 'Terminado',
       progress: 100,
       github: 'https://github.com/JoseCapitan/Gestor-de-Proyectos',
-      demo: 'https://player.vimeo.com/video/1124257167?'
-    }
+      demo: 'https://player.vimeo.com/video/1124257167?',
+    },
   ];
 
-ngOnInit() {
+  ngOnInit() {
     // Fuerza el scroll al inicio cada vez que se carga el componente
     window.scrollTo(0, 0);
   }
 
-
   // Modal de Video
-selectedProject: Project | null = null;
-isModalOpen = false;
+  selectedProject: Project | null = null;
+  isModalOpen = false;
 
-constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) {}
 
-handleViewResult(project: Project) {
-  this.selectedProject = project;
-  this.isModalOpen = true;
-}
+  handleViewResult(project: Project) {
+    this.selectedProject = project;
+    this.isModalOpen = true;
+  }
 
-// Cerrar modal
-closeModal() {
-  this.isModalOpen = false;
-  this.selectedProject = null;
-}
+  // Cerrar modal
+  closeModal() {
+    this.isModalOpen = false;
+    this.selectedProject = null;
+  }
 
-getSafeUrl(url: string | undefined): SafeResourceUrl {
+  getSafeUrl(url: string | undefined): SafeResourceUrl {
     return url ? this.sanitizer.bypassSecurityTrustResourceUrl(url) : '';
   }
 
   // Modal de imagen
-selectedImage: string | null = null;
-isImageModalOpen = false;
+  selectedImage: string | null = null;
+  isImageModalOpen = false;
 
-openImageModal(imgUrl: string) {
-  console.log('Imagen clickeada:', imgUrl); // ← Para depurar
-  this.selectedImage = imgUrl;
-  this.isImageModalOpen = true;
-}
+  openImageModal(imgUrl: string) {
+    console.log('Imagen clickeada:', imgUrl); // ← Para depurar
+    this.selectedImage = imgUrl;
+    this.isImageModalOpen = true;
+  }
 
-closeImageModal() {
-  this.isImageModalOpen = false;
-  this.selectedImage = null;
-}
-
-
+  closeImageModal() {
+    this.isImageModalOpen = false;
+    this.selectedImage = null;
+  }
 }
