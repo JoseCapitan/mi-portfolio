@@ -7,7 +7,7 @@ import { CurriculumComponent } from './components/curriculum/curriculum.componen
 export const routes: Routes = [
   { path: '', component: HeroComponent },
   { path: 'proyectos', component: ProjectsComponent },
-  { path: 'curriculum', component: CurriculumComponent }, // o crea una vista específica
+  { path: 'curriculum', component: CurriculumComponent }, 
   { path: 'contacto', component: ContactComponent },
   { path: '**', redirectTo: '' } // Redirige rutas no encontradas al home
 ];
