@@ -34,14 +34,56 @@ export class CurriculumComponent implements AfterViewInit {
   ];
   
   experiences: Experience[] = [
-    { role: 'Frontend Developer', company: 'Prácticas Angular', year: '2025', description: 'Desarrollo de proyectos en Angular, integración de backend y UI/UX.' }
+    { role: 'Frontend Developer', company: 'CodeArts', year: 'Julio 2025 - Octubre 2025', 
+    description: 
+`
+● Diseñé y desarrollé componentes reutilizables en Angular (modulares y tipados con TypeScript), enfocados en reuso y la mantenibilidad del código.
+● Implementé navegación y experiencia de usuario avanzada: enrutado con routerLink, gestión de enlaces activos, menú hamburguesa responsive y scroll-spy.
+● Desarrollé servicios Angular con HttpClient para consumo de APIs REST; creé un endpoint en Symfony para recibir formularios y validar datos antes de enviar correo (pruebas con Mailtrap).
+● Implementé el diseño visual con Tailwind CSS y HTML, adaptando la interfaz para ser totalmente responsive (desktop - móvil).
+● Participé en reuniones con el cliente para recoger requisitos y traducirlos en issues y tareas concretas; planifiqué entregables dentro del sprint y optimicé comportamientos del user flow.
+`},
+
+{ role: 'Technical support specialist', company: 'Teleperformance', year: 'Mayo 2018 - Marzo 2023', 
+    description: 
+`
+● Diagnostiqué y resolví incidencias de hardware y software, asegurando la continuidad operativa de los
+sistemas de la empresa.
+● Analicé y asesoré sobre averías técnicas, cumpliendo con los acuerdos de nivel de servicio (SLA) para
+optimizar los tiempos de respuesta.
+● Configuré y desplegué equipos informáticos, adaptándolos a las necesidades de cada usuario y a las
+políticas de la empresa.
+
+`},
+
+{ role: 'Database Administrator', company: 'Palacio Marqués de la Gomera', year: 'Septiembre 2010 - Mayo 2011', 
+    description: 
+`
+● Brindé soporte y administré la base de datos, asegurando la fiabilidad de la información.
+● Optimicé los datos para los diferentes departamentos de la empresa.
+● Realicé copias de seguridad y restauraciones de datos, garantizando la integridad y disponibilidad de la información.
+`}
+
   ];
 
   skills: Skill[] = [
     { name: 'Angular'},
     { name: 'TypeScript'},
-    { name: 'Java'},
-    { name: 'Git'}
+    { name: 'Symfony'},
+    { name: 'PHP'},
+    { name: 'Docker'},
+    { name: 'HTML5'},
+    { name: 'CSS3'},
+    { name: 'JavaScript'},
+    { name: 'MySQL'},
+    { name: 'PostgreSQL'},
+    { name: 'Figma'},
+    { name: 'Git'},
+    { name: 'GitHub'},
+    { name: 'Tailwind CSS'},
+    { name: 'Bootstrap'},
+    { name: 'Linux'},
+    { name: 'Windows'},
   ];
 
   ngAfterViewInit() {

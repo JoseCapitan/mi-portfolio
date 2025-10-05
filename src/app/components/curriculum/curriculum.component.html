@@ -1,85 +1,191 @@
+<section
+  class="min-h-screen flex flex-col items-center px-4 bg-gray-950 pt-20 pb-10"
+>
+  <!-- CABECERA / PERFIL -->
+  <div
+    class="curriculum-section bg-gray-900 border border-cyan-400 pt-5 pb-0 px-5 rounded-3xl shadow-lg flex flex-col md:flex-row items-center md:items-center gap-4 w-full max-w-4xl opacity-0 translate-y-10 transition-all duration-700 ease-out"
+  >
+    <!-- LOGO -->
+    <div class="flex-shrink-0 flex justify-center md:justify-start">
+      <img
+        src="assets/C3.png"
+        alt="Logo personal"
+        class="w-44 h-44 md:w-64 md:h-64 rounded-2xl object-cover drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]"
+      />
+    </div>
 
-<section class="min-h-screen flex flex-col items-center px-4 bg-gray-950 pt-20">
-	<!-- CABECERA -->
-	<div id="curriculum-header" class="flex flex-col items-center text-center gap-4 opacity-0 -translate-y-10 transition-all duration-700 ease-out">
-		<img src="assets/C3.png" alt="Logo personal" class="w-32 h-32 md:w-48 md:h-48 rounded-2xl object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] animate-pulse"/>
-		<h1 class="text-5xl md:text-7xl font-extrabold text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">JOSÉ CAPITÁN</h1>
-		<h2 class="text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-pink-400 to-yellow-400 animate-gradient">Frontend Developer (Angular / TypeScript)</h2>
-		<div class="flex gap-4 mt-4">
-			<a href="https://www.linkedin.com/in/jcapi" target="_blank" class="hover:scale-110 transition-transform"><img src="assets/linkedin.png" alt="LinkedIn" class="w-8 h-8"/></a>
-			<a href="https://github.com/JoseCapitan" target="_blank" class="hover:scale-110 transition-transform"><img src="assets/github.png" alt="GitHub" class="w-8 h-8"/></a>
-			<a href="mailto:ercapitan7@gmail.com" class="hover:scale-110 transition-transform"><img src="assets/email.png" alt="Correo" class="w-8 h-7"/></a>
-		</div>
-	</div>
+    <!-- INFO -->
+    <div class="flex flex-col text-center md:text-left flex-1">
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-3 drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]"
+      >
+        José M. Capitán Cruz
+      </h1>
+      <h2
+        class="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r text-white mb-6"
+      >
+        Desarrollador de Aplicaciones Web (Angular / TypeScript)
+      </h2>
 
-	<!-- SECCIONES -->
-	<div class="w-full max-w-4xl flex flex-col gap-12 mt-16">
-		<!-- Formación Académica -->
-		<div class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out">
-			<h3 class="text-3xl font-bold text-cyan-400 mb-6 flex items-center gap-2"><span class="text-2xl">📚</span>Formación Académica</h3>
-			<ul class="space-y-4">
-				@for (edu of educations; track edu) {
-				<li class="flex items-center gap-4 text-white">
-					<span class="text-xl">⏳</span>
-					<div>
-						<span class="font-bold text-cyan-400">{{ edu.degree }}</span> <span class="text-gray-300">- {{ edu.institution }}</span>
-						<div class="text-sm text-gray-400">{{ edu.year }}</div>
-					</div>
-				</li>
-				}
-			</ul>
-		</div>
+      <!-- REDES -->
+      <div class="flex flex-col md:flex-row md:items-center md:gap-6 gap-3">
+        <!-- ICONOS -->
+        <div class="flex justify-center md:justify-start gap-6">
+          <a
+            href="https://www.linkedin.com/in/jcapi"
+            target="_blank"
+            class="hover:scale-110 transition-transform"
+          >
+            <img src="assets/linkedin.png" alt="LinkedIn" class="w-8 h-8" />
+          </a>
+          <a
+            href="https://github.com/JoseCapitan"
+            target="_blank"
+            class="hover:scale-110 transition-transform"
+          >
+            <img src="assets/github.png" alt="GitHub" class="w-8 h-8" />
+          </a>
+        </div>
 
-		<!-- Experiencia -->
-		<div class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out">
-			<h3 class="text-3xl font-bold text-cyan-400 mb-6 flex items-center gap-2"><span class="text-2xl">💼</span>Experiencia</h3>
-			<ul class="space-y-4">
-				@for (exp of experiences; track exp) {
-				<li class="flex items-start gap-4 text-white">
-					<span class="text-xl">⏳</span>
-					<div>
-						<span class="font-bold text-cyan-400">{{ exp.role }}</span> <span class="text-gray-300">- {{ exp.company }}</span>
-						<div class="text-sm text-gray-400">{{ exp.year }}</div>
-						<div class="text-gray-300">{{ exp.description }}</div>
-					</div>
-				</li>
-				}
-			</ul>
-		</div>
+        <!-- CORREO -->
+        <a
+          href="mailto:ercapitan7@gmail.com"
+          class="text-cyan-400 hover:underline text-lg font-medium"
+        >
+          ercapitan7@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
 
-		<!-- Habilidades Técnicas -->
-		<div class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out">
-			<h3 class="text-3xl font-bold text-cyan-400 mb-6 flex items-center gap-2"><span class="text-2xl">🛠️</span>Habilidades Técnicas</h3>
-			<div class="flex flex-wrap gap-3">
-				@for (skill of skills; track skill) {
-				<span class="px-4 py-2 rounded-full bg-cyan-400 text-black font-semibold shadow-md">{{ skill.name }}</span>
-				}
-			</div>
-		</div>
+  <!-- SECCIONES -->
+  <div class="w-full max-w-4xl flex flex-col gap-12 mt-16">
+    <!-- Formación Académica -->
+    <div
+      class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out"
+    >
+      <h3 class="text-3xl font-bold text-cyan-400 mb-8 text-center">
+        <span class="text-2xl"></span>Formación Académica
+      </h3>
 
-		<!-- Idiomas -->
-		<div class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out">
-			<h3 class="text-3xl font-bold text-cyan-400 mb-6 flex items-center gap-2"><span class="text-2xl">🌐</span>Idiomas</h3>
-			<div class="flex flex-col gap-2">
-				<div class="flex items-center gap-2">
-					<span class="text-2xl">🇪🇸</span>
-					<span class="text-white">Español (Nativo)</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<span class="text-2xl">🇬🇧</span>
-					<span class="text-white">Inglés (B2)</span>
-				</div>
-			</div>
-		</div>
+      <div class="relative border-l border-cyan-500 pl-6">
+        @for (edu of educations; track edu) {
+        <div class="mb-8 relative">
+          <div
+            class="absolute -left-[20px] top-1 w-5 h-5 bg-cyan-500 rounded-full border-2 border-gray-900"
+          ></div>
+          <div class="bg-gray-800 p-4 rounded-2xl shadow-md">
+            <h4 class="text-xl font-semibold text-cyan-300">
+              {{ edu.degree }}
+            </h4>
+            <p class="text-gray-400">{{ edu.institution }} — {{ edu.year }}</p>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
 
-		<!-- Certificaciones -->
-		<div class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out">
-			<h3 class="text-3xl font-bold text-cyan-400 mb-6 flex items-center gap-2"><span class="text-2xl">🎓</span>Certificaciones</h3>
-			<ul class="space-y-2">
-				<li class="text-white">Certificación Angular - OpenWebinars</li>
-				<li class="text-white">Curso DevOps - OpenWebinars</li>
-			</ul>
-		</div>
-	</div>
+    <!-- Experiencia -->
+    <div
+      class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out"
+    >
+      <h3 class="text-3xl font-bold text-cyan-400 mb-8 text-center">
+        <span class="text-2xl">💼</span>Experiencia
+      </h3>
+
+      <div class="relative border-l border-cyan-500 pl-6">
+        @for (exp of experiences; track exp) {
+        <div class="mb-8 relative">
+          <div
+            class="absolute -left-[20px] top-1 w-5 h-5 bg-cyan-500 rounded-full border-2 border-gray-900"
+          ></div>
+          <div class="bg-gray-800 p-4 rounded-2xl shadow-md">
+            <h4 class="text-xl font-semibold text-cyan-300">{{ exp.role }}</h4>
+            <p class="text-gray-400">{{ exp.company }} — {{ exp.year }}</p>
+            <p class="text-gray-300 mt-2 whitespace-pre-line">
+              {{ exp.description }}
+            </p>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Habilidades Técnicas -->
+    <div
+      class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out"
+    >
+      <h3 class="text-3xl font-bold text-cyan-400 mb-6 text-center">
+        <span class="text-2xl">🛠️</span>Habilidades Técnicas
+      </h3>
+      <div class="flex flex-wrap gap-3">
+        @for (skill of skills; track skill) {
+        <span
+          class="px-4 py-2 rounded-full bg-cyan-400 text-black font-semibold shadow-md"
+          >{{ skill.name }}</span
+        >
+        }
+      </div>
+    </div>
+
+    <!-- Idiomas -->
+    <div
+      class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out"
+    >
+      <h3 class="text-3xl font-bold text-cyan-400 mb-6 text-center">
+        <span class="text-2xl">🌐</span>Idiomas
+      </h3>
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🇪🇸</span>
+          <span class="text-white">Español (Nativo)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <img src="assets/catalan.svg" alt="Català" class="w-8 h-8 rounded" />
+          <span class="text-white">Català (Nativo)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🇬🇧</span>
+          <span class="text-white">Inglés (B1)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificaciones -->
+    <div
+      class="curriculum-section bg-gray-900 border border-cyan-400 p-6 rounded-3xl shadow-lg opacity-0 translate-y-10 transition-all duration-700 ease-out"
+    >
+      <h3
+        class="text-3xl font-bold text-cyan-400 mb-6 text-center flex items-center justify-center gap-2"
+      >
+        <span class="text-2xl">🎓</span>Certificaciones
+      </h3>
+
+      <ul class="space-y-4">
+        <li
+          class="flex flex-col md:flex-row md:justify-between items-start md:items-center bg-gray-800 p-4 rounded-2xl shadow-md"
+        >
+          <div>
+            <span class="font-semibold text-cyan-300 text-lg"
+              >JavaScript Moderno - Guía para dominar el lenguaje</span
+            >
+            <p class="text-gray-400 text-sm">Udemy</p>
+          </div>
+          <div class="text-gray-400 text-sm mt-2 md:mt-0">2025</div>
+        </li>
+
+        <li
+          class="flex flex-col md:flex-row md:justify-between items-start md:items-center bg-gray-800 p-4 rounded-2xl shadow-md"
+        >
+          <div>
+            <span class="font-semibold text-cyan-300 text-lg"
+              >Programador de aplicaciones informáticas</span
+            >
+            <p class="text-gray-400 text-sm">Universidad de Osuna</p>
+          </div>
+          <div class="text-gray-400 text-sm mt-2 md:mt-0">2012</div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>
-
