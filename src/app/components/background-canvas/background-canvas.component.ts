@@ -50,41 +50,70 @@ ngAfterViewInit(): void {
       }
       animateParticles();
     }
-    // 2. Ondas animadas (waves-canvas)
-    const wavesCanvas = document.getElementById(
-      'waves-canvas'
-    ) as HTMLCanvasElement | null;
-    if (wavesCanvas) {
-      const ctx = wavesCanvas.getContext('2d');
-      function resizeWaves() {
-        if (!wavesCanvas) return;
-        wavesCanvas.width = window.innerWidth;
-        wavesCanvas.height = window.innerHeight;
-      }
-      window.addEventListener('resize', resizeWaves);
-      resizeWaves();
-      let t = 0;
-      function animateWaves() {
-        if (!ctx) return;
-        if (!wavesCanvas) return;
-        ctx.clearRect(0, 0, wavesCanvas.width, wavesCanvas.height);
-        ctx.globalAlpha = 0.5;
-        ctx.strokeStyle = '#6366f1';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        for (let x = 0; x < wavesCanvas.width; x += 4) {
-          const y =
-            wavesCanvas.height / 2 +
-            Math.sin(x / 60 + t) * 30 +
-            Math.cos(x / 120 - t) * 20;
-          ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-        t += 0.02;
-        requestAnimationFrame(animateWaves);
-      }
-      animateWaves();
+    // --- Ondas animadas (waves-canvas) ---
+const wavesCanvas = document.getElementById('waves-canvas') as HTMLCanvasElement | null;
+if (wavesCanvas) {
+  const ctx = wavesCanvas.getContext('2d');
+
+  function resizeWaves() {
+    if (!wavesCanvas) return;
+    wavesCanvas.width = window.innerWidth;
+    wavesCanvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resizeWaves);
+  resizeWaves();
+
+  let t = 0;
+
+  function drawWave(
+    color: string,
+    amplitude: number,
+    wavelength: number,
+    speed: number,
+    lineWidth: number,
+    opacity: number,
+    direction: 1 | -1 = 1
+  ) {
+    if (!ctx || !wavesCanvas) return;
+    ctx.beginPath();
+    ctx.globalAlpha = opacity;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineWidth;
+
+    for (let x = 0; x < wavesCanvas.width; x += 2) {
+      const y =
+        wavesCanvas.height / 2 +
+        Math.sin((x / wavelength + t * speed) * direction) * amplitude +
+        Math.cos((x / (wavelength * 2) - t * speed) * direction) * amplitude * 0.5;
+      ctx.lineTo(x, y);
     }
+
+    ctx.stroke();
+  }
+
+  function animateWaves() {
+    if (!ctx || !wavesCanvas) return;
+    ctx.clearRect(0, 0, wavesCanvas.width, wavesCanvas.height);
+
+    // 💠 Capa 1: onda principal (la que ya tenías)
+    drawWave('#00ffff', 30, 60, 0.8, 0.3, 0.6);
+
+    // 💠 Capa 2: onda secundaria entrelazada (más fina)
+    drawWave('#00bfff', 25, 65, 1, 2, 0.4);
+
+    // 💠 Capa 3: onda invertida (hacia el otro lado, para efecto ADN)
+    drawWave('#4fd1c5', 25, 65, 1, 2, 0.4, -1);
+
+    // 💠 Capa 4: onda gruesa y difuminada en sentido contrario (más lenta)
+    drawWave('#1e40af', 60, 120, 0.2, 25, 0.1, -1);
+
+    t += 0.02;
+    requestAnimationFrame(animateWaves);
+  }
+
+  animateWaves();
+}
 
 }
 }

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -13,12 +13,17 @@ import {
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })
-export class ContactComponent implements AfterViewInit {
+export class ContactComponent implements AfterViewInit, OnInit {
   contactForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     message: new FormControl('', [Validators.required]),
   });
+
+  ngOnInit() {
+    // Fuerza el scroll al inicio cada vez que se carga el componente
+    window.scrollTo(0, 0);
+  }
 
   successMessage = '';
   errorMessage = '';

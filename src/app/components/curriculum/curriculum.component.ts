@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 
 interface Education {
   degree: string;
@@ -24,7 +24,7 @@ interface Skill {
   templateUrl: './curriculum.component.html',
   styleUrl: './curriculum.component.scss'
 })
-export class CurriculumComponent implements AfterViewInit {
+export class CurriculumComponent implements AfterViewInit, OnInit {
 
   // Datos de ejemplo
   educations: Education[] = [
@@ -85,6 +85,11 @@ políticas de la empresa.
     { name: 'Linux'},
     { name: 'Windows'},
   ];
+
+  ngOnInit() {
+    // Fuerza el scroll al inicio cada vez que se carga el componente
+    window.scrollTo(0, 0);
+  }
 
   ngAfterViewInit() {
     // Animaciones de aparición al cargar la página
