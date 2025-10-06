@@ -1,0 +1,62 @@
+<div
+  class="project-card flex flex-col md:flex-row md:items-center bg-gray-950 border border-cyan-400 p-6 rounded-3xl shadow-lg gap-4 transition-transform duration-300 ease-in-out hover:scale-105"
+>
+  <!-- Logo -->
+  <div class="flex-shrink-0">
+    <img
+      [src]="project.logo"
+      alt="{{ project.title }}"
+      class="w-full md:w-48 h-auto md:h-48 object-contain rounded-xl cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110"
+      (click)="onImageClick()"
+    />
+  </div>
+
+  <!-- Contenido -->
+  <div class="flex-1">
+    <!-- Título -->
+    <h5 class="text-xl font-bold text-cyan-400 mb-2">{{ project.title }}</h5>
+
+    <!-- Descripción -->
+    <p class="text-gray-300 mb-4">{{ project.description }}</p>
+
+    <!-- Etiquetas -->
+    <div class="flex flex-wrap gap-2 mb-4">
+      @for (tech of project.technologies; track tech) {
+      <span
+        class="px-2 py-1 bg-cyan-400 text-black rounded text-sm font-medium"
+        >{{ tech }}</span
+      >
+      }
+    </div>
+
+    <!-- Información adicional -->
+    <div class="flex items-center space-x-4 text-gray-300 mb-4">
+      <span>• Año: {{ project.year }}</span>
+      <span>• Estado: {{ project.status }}</span>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="w-full bg-gray-700 rounded-full h-5 mb-4 relative">
+      <div
+        class="h-full rounded-full flex items-center justify-center text-lg text-white font-bold"
+        [class.bg-green-500]="project.status === 'Terminado'"
+        [class.bg-yellow-500]="project.status === 'En curso'"
+        [class.bg-red-500]="project.status === 'Pausado'"
+        [style.width.%]="project.progress"
+      >
+        <!-- Mostrar el porcentaje -->
+
+        <span>{{ project.progress }}%</span>
+      </div>
+    </div>
+
+    <!-- Botón -->
+    <button
+      class="px-4 py-2 rounded-lg border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      [disabled]="project.status === 'Pausado'"
+      (click)="onViewResult()"
+    >
+      {{ project.status === "Pausado" ? "No disponible" : "Ver resultado" }}
+    </button>
+  </div>
+</div>

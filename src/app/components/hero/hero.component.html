@@ -1,1 +1,89 @@
-<p>hero works!</p>
+<section
+  class="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-950"
+>
+
+  <!-- Hero principal -->
+  <div
+    class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-transparent z-10"
+  >
+    <!-- Canvas de polígonos animados sobre el hero -->
+    <canvas
+      id="hero-polygons-canvas"
+      style="
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        min-width: 100vw;
+        min-height: 100vh;
+        max-width: none;
+        max-height: none;
+        z-index: 2;
+        pointer-events: none;
+      "
+      width="1920"
+      height="1080"
+    ></canvas>
+
+    <!-- Contenido principal del hero -->
+    <div
+      id="hero"
+      class="relative z-20 text-center text-white flex flex-col items-center justify-center gap-1
+            opacity-0 -translate-y-10 transition-all duration-1500 ease-out"
+    >
+    <!-- Logo -->
+  <img
+    src="assets/C3.png"
+    alt="Logo personal"
+    class="max-w-[400px] max-h-[400px] rounded-2xl object-contain 
+        animate-pulse drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]"
+  />
+  <!-- Nombre -->
+      <h1
+        class="text-5xl mb-6 md:text-7xl font-extrabold tracking-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]"
+      >
+        JOSÉ CAPITÁN
+      </h1>
+      <h2 class="text-2xl md:text-3xl font-semibold mb-2 
+          bg-gradient-to-r from-indigo-400 via-pink-400 to-yellow-400 
+          bg-clip-text text-transparent animate-gradient">
+        Frontend Developer (Angular / TypeScript)
+      </h2>
+      <div class="flex gap-4 mt-4">
+        <a
+          href="https://www.linkedin.com/in/jcapi"
+          target="_blank"
+          class="hover:scale-110 transition-transform"
+        >
+          <img src="assets/linkedin.png" alt="LinkedIn" class="w-8 h-8" />
+        </a>
+        <a
+          href="https://github.com/JoseCapitan"
+          target="_blank"
+          class="hover:scale-110 transition-transform"
+        >
+          <img src="assets/github.png" alt="GitHub" class="w-8 h-8" />
+        </a>
+        <a
+          href="mailto:ercapitan7@gmail.com"
+          class="hover:scale-110 transition-transform"
+        >
+          <img src="assets/email.png" alt="Correo" class="w-8 h-7" />
+        </a>
+      </div>
+      <!-- Scroll Mouse Indicator -->
+      <div class="mouse-scroll">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+        <span class="arrow"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- About section -->
+  <app-about></app-about>
+  <app-timeline></app-timeline>
+</section>
+
