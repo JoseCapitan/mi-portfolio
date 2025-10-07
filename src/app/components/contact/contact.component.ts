@@ -60,7 +60,7 @@ export class ContactComponent implements AfterViewInit, OnInit {
     this.errorMessage = '';
     this.successMessage = '';
 
-    const formspreeEndpoint = 'https://formspree.io/f/myznplvy';
+    const formspreeEndpoint = 'https://formspree.io/f/mgvnleqb';
 
     const formData = {
       name: this.contactForm.value.name,
