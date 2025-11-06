@@ -34,14 +34,14 @@ export class CurriculumComponent implements AfterViewInit, OnInit {
   ];
   
   experiences: Experience[] = [
-    { role: 'Frontend Developer', company: 'CodeArts', year: 'Julio 2025 - Octubre 2025', 
+    { role: 'Angular Developer', company: 'CodeArts', year: 'Febrero 2025 - Actualidad', 
     description: 
 `
-● Diseñé y desarrollé componentes reutilizables en Angular (modulares y tipados con TypeScript), enfocados en reuso y la mantenibilidad del código.
-● Implementé navegación y experiencia de usuario avanzada: enrutado con routerLink, gestión de enlaces activos, menú hamburguesa responsive y scroll-spy.
-● Desarrollé servicios Angular con HttpClient para consumo de APIs REST; creé un endpoint en Symfony para recibir formularios y validar datos antes de enviar correo (pruebas con Mailtrap).
-● Implementé el diseño visual con Tailwind CSS y HTML, adaptando la interfaz para ser totalmente responsive (desktop - móvil).
-● Participé en reuniones con el cliente para recoger requisitos y traducirlos en issues y tareas concretas; planifiqué entregables dentro del sprint y optimicé comportamientos del user flow.
+● Diseño y desarrollé componentes reutilizables en Angular (modulares y tipados con TypeScript), enfocados en reuso y la mantenibilidad del código.
+● Implemento navegación y experiencia de usuario avanzada: enrutado con routerLink, gestión de enlaces activos, menú hamburguesa responsive y scroll-spy.
+● Desarrollo servicios Angular con HttpClient para consumo de APIs REST; creé un endpoint en Symfony para recibir formularios y validar datos antes de enviar correo (pruebas con Mailtrap).
+● Implemento el diseño visual con Tailwind CSS y HTML, adaptando la interfaz para ser totalmente responsive (desktop - móvil).
+● Participo en reuniones con el cliente para recoger requisitos y traducirlos en issues y tareas concretas; planifiqué entregables dentro del sprint y optimicé comportamientos del user flow.
 `},
 
 { role: 'Technical support specialist', company: 'Teleperformance', year: 'Mayo 2018 - Marzo 2023', 
